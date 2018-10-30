@@ -55,34 +55,30 @@
         document.getElementById("input").value = input;
     }
 
-    function addToInputHistory(input)
+    function addToInputHistory(operator)
     {
         inputHistory.push(input);
+        inputHistory.push(operator);
         updateInputHistory();
+
+        // TODO: Opdater input feltet med bereging.
     }
 
     function updateInputHistory()
     {
-        var 
-        
+        var history = "";
 
-        arr.forEach(element => {
-            console.log(element);
+        inputHistory.forEach(element => {
+            history += element + " ";
         });
 
-        document.getElementById("inputHistory").value = inputHistory;
+        document.getElementById("inputHistory").value = history;
         input = "";
     }
 
     function calculate()
     {
-
-
-        var inputs = inputHistory.split(" ");
-
-        arr.forEach(element => {
-            console.log(element);
-        });
+        // TODO: lav beregning som returnerer resulatt.
     }
 
 </script>
