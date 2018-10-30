@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lommeregner</title>
+    <style>
+        input[type=button] {
+            padding: 25px;
+            margin: 0px;
+        }
+
+        input[type=text] {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="inputHistory" disabled />
+    <br />
+    <input type="text" id="input" placeholder="0" />
+
+    <br />
+
+    <input type="button" value="7" onclick="addNumber(value)" />
+    <input type="button" value="8" onclick="addNumber(value)" />
+    <input type="button" value="9" onclick="addNumber(value)" />
+    <br />
+
+    <input type="button" value="4" onclick="addNumber(value)" />
+    <input type="button" value="5" onclick="addNumber(value)" />
+    <input type="button" value="6" onclick="addNumber(value)" />
+    <br />
+
+    <input type="button" value="1" onclick="addNumber(value)" />
+    <input type="button" value="2" onclick="addNumber(value)" />
+    <input type="button" value="9" onclick="addNumber(value)" />
+    <br />
+
+    <input type="button" value="0" onclick="addNumber(value)" />
+    <br />
+
+    <input type="button" id="add" value="+" onclick="addToInputHistory(value)" />
+    <input type="button" id="calculate" value="=" onclick="calculate()" />
+
+</body>
+
+<script>
+    var inputHistory = [];
+    var input = "";
+    //sessionStorage.inputValues = input;
+
+    function addNumber(number)
+    {
+        input = input + number;
+        document.getElementById("input").value = input;
+    }
+
+    function addToInputHistory(input)
+    {
+        inputHistory.push(input);
+        updateInputHistory();
+    }
+
+    function updateInputHistory()
+    {
+        var 
+        
+
+        arr.forEach(element => {
+            console.log(element);
+        });
+
+        document.getElementById("inputHistory").value = inputHistory;
+        input = "";
+    }
+
+    function calculate()
+    {
+
+
+        var inputs = inputHistory.split(" ");
+
+        arr.forEach(element => {
+            console.log(element);
+        });
+    }
+
+</script>
+
+</html>
