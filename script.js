@@ -1,62 +1,121 @@
-var inputHistory = [];
-var input = "";
+var _history2 = "";
+var _display = "";
+var _number1 = "";
+var _number2 = "";
+var _operator = "";
+
 //sessionStorage.inputValues = input;
+
+document.addEventListener('keyup', function (event) { 
+
+    // https://medium.com/@uistephen/keyboardevent-key-for-cross-browser-key-press-check-61dbad0a067a
+    var key = event.key || event.keyCode;
+        
+    var alertMessage = false;
+
+    if (isNaN(key))
+    {
+        if (key == "+" || key == "-" || key == "*" || key == "%" )
+        {
+            addOperator(key);
+        }
+        else if (key == "=" || key == "Enter")
+        {
+            calculate();
+        }
+        else if (key == "c" || key == "C")
+        {
+            clearAll();
+        }
+    }
+    else
+    {
+        addNumber(key);
+    }
+    
+});
 
 function addNumber(number)
 {
-    input = input + number;
-    document.getElementById("input").value = input;
+    if (_operator == "")
+    {
+        _number1 += number;    
+        writeToDisplay(_number1);
+    }
+    else
+    {
+        _number2 += number;
+        writeToDisplay(_number2);
+    }
 }
 
 function addOperator(operator)
 {
-    inputHistory.push(input);
-    inputHistory.push(operator);
-    updateHistory();
+    _operator = operator;
 
-    // TODO: Opdater input feltet med bereging.
+    _history2 += _display + " " + _operator + " ";
+    writeToHistory(_history2);
+    calculate();
 
     // TODO: Hvis man trykker to operatorer i rækkefølge, skal den sidste erstatte den seneste. 
     // Kig på sidste element i history og tjek om det ikke er et tal.
 }
 
-function updateHistory()
-{
-    var equation = "";
-
-    inputHistory.forEach(element => {
-        equation += element + " ";
-    });
-
-    document.getElementById("history").value = equation;
-    clearInput();
-}
-
-function clearInput()
-{
-    input = "";
-    document.getElementById("input").value = input;
-}
-
-function clearHistory()
-{
-    inputHistory = [];
-    document.getElementById("history").value = inputHistory;
-}
-
 function clearAll()
 {
-    clearInput();
-    clearHistory();
+    _number1 = "";
+    _number2 = "";
+    _operator = "";
+    writeToDisplay("");
+    writeToHistory("");
+}
+
+function getResult()
+{
+    calculate();
+    writeToHistory("");
 }
 
 function calculate()
 {
-    // TODO: lav beregning som returnerer resulatt.
-    var equation = "";
+    if (_number1 != "" && _number2 != "" && _operator != "")
+    {
+        var result = "";
+        var number1 = parseInt(_number1);
+        var number2 = parseInt(_number2);
 
-    inputHistory.forEach(element => {
-        equation += element + " ";
-    });
-    
+        if (_operator == "+")
+        {
+            result = number1 + number2;
+        }
+        else if (_operator == "-")
+        {
+            result = number1 - number2;
+        }
+        else if (_operator == "*")
+        {
+            result = number1 * number2;
+        }
+        else if (_operator == "%")
+        {
+            result = number1 % number2;
+        }
+
+        _number1 = result.toString();
+        _number2 = "";
+        writeToDisplay(_number1);
+
+    }
+}
+
+function writeToDisplay(value)
+{
+    _display = value;
+    document.getElementById("display").value = _display;
+}
+
+function writeToHistory(value)
+{
+    _history2 = value;
+    document.getElementById("history").value = _history2;
 }

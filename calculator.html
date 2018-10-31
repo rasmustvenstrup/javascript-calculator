@@ -8,32 +8,32 @@
     <div id="calculator" class="center">
         <input type="text" id="history" disabled />
         <br />
-        <input type="text" id="input" placeholder="0" />
+        <input type="text" id="display" placeholder="0" />
 
         <br />
 
         <input type="button" value="7" onclick="addNumber(value)" />
         <input type="button" value="8" onclick="addNumber(value)" />
         <input type="button" value="9" onclick="addNumber(value)" />
-        <input type="button" value="%" onclick="addOperator(value)" />
+        <input type="button" value="%" class="operator" onclick="addOperator(value)" />
         <br />
 
         <input type="button" value="4" onclick="addNumber(value)" />
         <input type="button" value="5" onclick="addNumber(value)" />
         <input type="button" value="6" onclick="addNumber(value)" />
-        <input type="button" value="*" onclick="addOperator(value)" />
+        <input type="button" value="*" class="operator" onclick="addOperator(value)" />
         <br />
 
         <input type="button" value="1" onclick="addNumber(value)" />
         <input type="button" value="2" onclick="addNumber(value)" />
         <input type="button" value="3" onclick="addNumber(value)" />
-        <input type="button" value="-" onclick="addOperator(value)" />
+        <input type="button" value="-" class="operator" onclick="addOperator(value)" />
         <br />
 
         <input type="button" value="0" onclick="addNumber(value)" />
-        <input type="button" id="clear" value="C" onclick="clearAll()" />
-        <input type="button" id="calculate" value="=" onclick="calculate()" />
-        <input type="button" value="+" onclick="addOperator(value)" />
+        <input type="button" class="function" value="C" onclick="clearAll()" />
+        <input type="button" class="function" value="=" onclick="getResult()" />
+        <input type="button" value="+" class="operator" onclick="addOperator(value)" />
         <br />
 
         
