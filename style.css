@@ -7,6 +7,7 @@ input[type=button] {
     width: 100px;
     height: 100px;
     /* margin: 2px; */
+    
 }
 
 input[type=text] {
@@ -31,9 +32,15 @@ input[type=text] {
     background-color: #e7c99a;
 }
 
+#history {
+    /* background-color: #fff6ed; */
+    /* border-bottom: none; */
+}
+
 #display {
     font-weight: bold;
     font-size: 26px;
+    margin-bottom: 2px;
 }
 
 .operator {
