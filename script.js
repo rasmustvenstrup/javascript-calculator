@@ -1,4 +1,4 @@
-var _history2 = "";
+var _history = "";
 var _display = "";
 var _number1 = "";
 var _number2 = "";
@@ -21,7 +21,7 @@ document.addEventListener('keyup', function (event) {
         }
         else if (key == "=" || key == "Enter")
         {
-            calculate();
+            getResult();
         }
         else if (key == "c" || key == "C")
         {
@@ -52,9 +52,8 @@ function addNumber(number)
 function addOperator(operator)
 {
     _operator = operator;
-
-    _history2 += _display + " " + _operator + " ";
-    writeToHistory(_history2);
+    _history += _display + " " + _operator + " ";
+    writeToHistory(_history);
     calculate();
 
     // TODO: Hvis man trykker to operatorer i rækkefølge, skal den sidste erstatte den seneste. 
@@ -104,7 +103,6 @@ function calculate()
         _number1 = result.toString();
         _number2 = "";
         writeToDisplay(_number1);
-
     }
 }
 
@@ -116,6 +114,6 @@ function writeToDisplay(value)
 
 function writeToHistory(value)
 {
-    _history2 = value;
-    document.getElementById("history").value = _history2;
+    _history = value;
+    document.getElementById("history").value = _history;
 }
