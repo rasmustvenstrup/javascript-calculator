@@ -77,6 +77,8 @@ function getResult()
 
 function calculate()
 {
+    // TODO: Der går noget galt med regningen, når man taster minus efter plus.
+
     if (_number1 != "" && _number2 != "" && _operator != "")
     {
         var result = "";
