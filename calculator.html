@@ -2,85 +2,45 @@
 <html>
 <head>
     <title>Lommeregner</title>
-    <style>
-        input[type=button] {
-            padding: 25px;
-            margin: 0px;
-        }
-
-        input[type=text] {
-            padding: 10px;
-            margin: 5px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <input type="text" id="inputHistory" disabled />
-    <br />
-    <input type="text" id="input" placeholder="0" />
+    <div id="calculator" class="center">
+        <input type="text" id="history" disabled />
+        <br />
+        <input type="text" id="input" placeholder="0" />
 
-    <br />
+        <br />
 
-    <input type="button" value="7" onclick="addNumber(value)" />
-    <input type="button" value="8" onclick="addNumber(value)" />
-    <input type="button" value="9" onclick="addNumber(value)" />
-    <br />
+        <input type="button" value="7" onclick="addNumber(value)" />
+        <input type="button" value="8" onclick="addNumber(value)" />
+        <input type="button" value="9" onclick="addNumber(value)" />
+        <input type="button" value="%" onclick="addOperator(value)" />
+        <br />
 
-    <input type="button" value="4" onclick="addNumber(value)" />
-    <input type="button" value="5" onclick="addNumber(value)" />
-    <input type="button" value="6" onclick="addNumber(value)" />
-    <br />
+        <input type="button" value="4" onclick="addNumber(value)" />
+        <input type="button" value="5" onclick="addNumber(value)" />
+        <input type="button" value="6" onclick="addNumber(value)" />
+        <input type="button" value="*" onclick="addOperator(value)" />
+        <br />
 
-    <input type="button" value="1" onclick="addNumber(value)" />
-    <input type="button" value="2" onclick="addNumber(value)" />
-    <input type="button" value="9" onclick="addNumber(value)" />
-    <br />
+        <input type="button" value="1" onclick="addNumber(value)" />
+        <input type="button" value="2" onclick="addNumber(value)" />
+        <input type="button" value="3" onclick="addNumber(value)" />
+        <input type="button" value="-" onclick="addOperator(value)" />
+        <br />
 
-    <input type="button" value="0" onclick="addNumber(value)" />
-    <br />
+        <input type="button" value="0" onclick="addNumber(value)" />
+        <input type="button" id="clear" value="C" onclick="clearAll()" />
+        <input type="button" id="calculate" value="=" onclick="calculate()" />
+        <input type="button" value="+" onclick="addOperator(value)" />
+        <br />
 
-    <input type="button" id="add" value="+" onclick="addToInputHistory(value)" />
-    <input type="button" id="calculate" value="=" onclick="calculate()" />
-
+        
+        
+    </div>
 </body>
 
-<script>
-    var inputHistory = [];
-    var input = "";
-    //sessionStorage.inputValues = input;
-
-    function addNumber(number)
-    {
-        input = input + number;
-        document.getElementById("input").value = input;
-    }
-
-    function addToInputHistory(operator)
-    {
-        inputHistory.push(input);
-        inputHistory.push(operator);
-        updateInputHistory();
-
-        // TODO: Opdater input feltet med bereging.
-    }
-
-    function updateInputHistory()
-    {
-        var history = "";
-
-        inputHistory.forEach(element => {
-            history += element + " ";
-        });
-
-        document.getElementById("inputHistory").value = history;
-        input = "";
-    }
-
-    function calculate()
-    {
-        // TODO: lav beregning som returnerer resulatt.
-    }
-
-</script>
+<script src="script.js"></script>
 
 </html>

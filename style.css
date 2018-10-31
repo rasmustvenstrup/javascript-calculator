@@ -1,0 +1,33 @@
+body {
+    background-color: lightgrey;
+}
+
+input[type=button] {
+    /* padding: 25px; */
+    width: 100px;
+    height: 100px;
+    /* margin: 2px; */
+}
+
+input[type=text] {
+    padding: 10px;
+    margin: 5px;
+    width: 388px;
+    margin: 0px;
+    text-align: right;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+}
+
+#calculator {
+     width: 440px;
+     margin-top: 20px;
+}
+
+#input {
+    font-weight: bold;
+    font-size: 26px;
+}
