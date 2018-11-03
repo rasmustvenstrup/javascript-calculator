@@ -23,11 +23,12 @@ document.addEventListener('keyup', function (event) {
         }
         else if (key == "c" || key == "C")
         {
-            clearAll();
+            clearDisplay();
         }
         else if (key == "Backspace")
         {
             // TODO: SLet sidste indtastede tal.
+            deleteDigit();
         }
     }
     else
@@ -53,16 +54,17 @@ function addNumber(number)
 
 function addOperator(operator)
 {
+    _history += _display + " " + operator + " ";
+    writeToHistory(_history);
     calculate();
     _operator = operator;
-    _history += _display + " " + _operator + " ";
-    writeToHistory(_history);
+    
     
     // TODO: Hvis man trykker to operatorer i rækkefølge, skal den sidste erstatte den seneste. 
     // Kig på sidste element i history og tjek om det ikke er et tal.
 }
 
-function clearAll()
+function clearDisplay()
 {
     _number1 = "";
     _number2 = "";
@@ -104,6 +106,20 @@ function calculate()
 
         _number1 = result.toString();
         _number2 = "";
+        writeToDisplay(_number1);
+    }
+}
+
+function deleteDigit()
+{
+    if (_number2 != "")
+    {
+        _number2 = _number2.substring(0, _number2.length - 1)
+        writeToDisplay(_number2);
+    }
+    else
+    {
+        _number1 = _number1.substring(0, _number1.length - 1)
         writeToDisplay(_number1);
     }
 }
