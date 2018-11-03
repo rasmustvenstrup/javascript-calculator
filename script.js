@@ -10,8 +10,6 @@ document.addEventListener('keyup', function (event) {
 
     // https://medium.com/@uistephen/keyboardevent-key-for-cross-browser-key-press-check-61dbad0a067a
     var key = event.key || event.keyCode;
-        
-    var alertMessage = false;
 
     if (isNaN(key))
     {
@@ -26,6 +24,10 @@ document.addEventListener('keyup', function (event) {
         else if (key == "c" || key == "C")
         {
             clearAll();
+        }
+        else if (key == "Backspace")
+        {
+            // TODO: SLet sidste indtastede tal.
         }
     }
     else
@@ -51,11 +53,11 @@ function addNumber(number)
 
 function addOperator(operator)
 {
+    calculate();
     _operator = operator;
     _history += _display + " " + _operator + " ";
     writeToHistory(_history);
-    calculate();
-
+    
     // TODO: Hvis man trykker to operatorer i rækkefølge, skal den sidste erstatte den seneste. 
     // Kig på sidste element i history og tjek om det ikke er et tal.
 }
@@ -77,8 +79,6 @@ function getResult()
 
 function calculate()
 {
-    // TODO: Der går noget galt med regningen, når man taster minus efter plus.
-
     if (_number1 != "" && _number2 != "" && _operator != "")
     {
         var result = "";
